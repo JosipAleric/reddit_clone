@@ -1,0 +1,39 @@
+version: "3.7"
+services:
+  reddit_clone:
+    build: .
+    container_name: reddit_clone
+    image: reddit_clone:latest
+    environment:
+      - MYSQL_HOST=reddit_clone_mysql
+    ports:
+      - 80:8080
+    networks:
+      - rest-network
+    volumes:
+      - java-data:/app/uploads
+    depends_on:
+      - reddit_clone_mysql
+    restart: always
+  reddit_clone_mysql:
+    container_name: reddit_clone_mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --mysql-native-password=ON
+    image: mysql
+    ports:
+      - 3306:3306
+    networks:
+      - rest-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=lozinka
+      - MYSQL_DATABASE=reddit_clone
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=lozinka
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+networks:
+  rest-network:
+    driver: bridge
+volumes:
+  mysql-data:
+  java-data:

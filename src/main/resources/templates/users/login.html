@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prijava na sustav</title>
+    <!-- Include Bootstrap CSS -->
+<!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    &lt;!&ndash; Include Font Awesome &ndash;&gt;-->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="bg-gray-800">
+<div class="container px-8 sm:px-0 mx-auto">
+    <div class="min-h-screen bg-gray-800 py-6 flex flex-col justify-center sm:py-12">
+        <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+            <div class="absolute inset-0 bg-[#D93900] shadow-lg transform -skew-y-6 sm:skew-y-0 -rotate-6 rounded-3xl">
+            </div>
+            <div class="relative px-4 py-10 bg-gray-900 shadow-lg rounded-3xl sm:p-20">
+                <div class="max-w-md mx-auto">
+                    <div>
+                        <div class="flex items-center justify-center">
+                            <img src="https://www.iconpacks.net/icons/2/free-reddit-logo-icon-2436-thumb.png" alt="Logo" class="h-[40px] w-[40px] mr-2" />
+                            <div class="text-2xl text-[#D93900] font-bold">Reddit Clone</div>
+                        </div>
+                        <h1 class="text-2xl text-[#D93900] font-semibold text-center -mb-4 pt-6">Login</h1>
+                    </div>
+
+                    <div class="divide-y divide-gray-200">
+                        <div class="py-8 text-base text-black leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                            <form method="post" action="/auth/login">
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                                <div class="form-group">
+                                    <div class="relative mb-5">
+                                        <input autocomplete="off" required id="email" name="email" type="text" class="peer placeholder-transparent bg-gray-900 h-10 w-full border-b-2 border-gray-400 text-gray-400 focus:outline-none focus:borer-rose-600" placeholder="Email adresa" />
+                                        <label for="email" class="absolute left-0 -top-3.5 text-gray-400 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email Adresa</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="relative mb-5">
+                                        <input required autocomplete="off" id="password" name="password" type="password" class="peer placeholder-transparent bg-gray-900 h-10 w-full border-b-2 border-gray-400 text-gray-400 focus:outline-none focus:borer-rose-600" placeholder="Lozinka" />
+                                        <label for="password" class="absolute left-0 -top-3.5 text-gray-400 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Lozinka</label>
+                                    </div>
+                                </div>
+
+                                <div th:if="${param.error}" class="text-red-500 text-sm my-3">
+                                    Pogrešno korisničko ime ili lozinka. Molimo pokušajte ponovo.
+                                </div>
+
+                                <div class="text-white text-sm text-center pb-5 pt-4">Nemate račun? <a href="/auth/register" class="text-[#D93900] underline"> Registrirajte se</a></div>
+
+                                <div class="relative flex justify-center">
+                                    <button class="bg-[#D93900] text-white rounded-md px-5 py-2.5 font-semibold text-sm mb-5 mx-auto" type="submit"><i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>Prijavi se</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+    }
+</style>
